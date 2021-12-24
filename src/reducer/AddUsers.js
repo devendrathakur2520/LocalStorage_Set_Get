@@ -2,6 +2,7 @@ import { ADD_USER } from "../action";
 
 const initialState={
   data:{
+    id:[new Date().getTime().toString()],
     name:"",
   email:"",
   phone:"",

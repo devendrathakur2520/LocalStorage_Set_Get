@@ -1,10 +1,10 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { setUser } from '../action';
+import { Table } from 'react-bootstrap';
 
 export default function ShowData() {
   const dispatch = useDispatch()
-const i = 0;
   const data = useSelector(state => state.SetUser.data)
   console.log("golu",data[0]);
   // const handleCheck =(i)=>{
@@ -14,35 +14,52 @@ const i = 0;
 
   //---------onDelete functionality is not working ----------
 
-//   const onDelete=(j) =>{
-//      console.log("ProductList.onDelete: ", j);
-// for(i=0;i<=localStorage.Users.length;i++)
-// {
-//   if(i==j)
-//   data= data.filter(data => data[i] !== j);
-// }
-//     // this.setState({products});
-//     dispatch(setUser(data))
-//     console.log(data);
-//     localStorage.setItem('Users', JSON.parse(data));
-// }
+  const onDelete=(id) =>{
+     
+
+  const newData= data.filter(data => data.id !== id);
+
+    // this.setState({products});
+    //dispatch(setUser(data))
+    localStorage.setItem('Users', JSON.stringify(newData));
+    window.location.reload()
+}
 
   return (
     <div>
-      {
-        data.map((data,i)=>(
-          <>
-          <li>{data.name}</li>
-          <li>{data.email}</li>
-          <li>{data.phone}</li>
-          <label>
-                  complete
-                 
-                </label>
-          </>
-        )
       
-        )}
+          <>
+          
+
+          <Table  striped bordered hover variant="dark">
+  <thead>
+    <tr>
+     
+      <th>Name</th>
+      <th>Email</th>
+      <th>Phone</th>
+    </tr>
+  </thead>
+  <tbody>
+  {
+        data.map((data,i)=>(
+    <tr key={i}>
+      
+      <th>{data.name}</th>
+      <th>{data.email}</th>
+      <th>{data.phone}</th>
+      <button onClick={()=>onDelete(data.id)}>Delete</button>
+    </tr>
+   )
+      
+   )}
+  </tbody>
+</Table>
+
+
+
+          </>
+        
     </div>
   )
 }
