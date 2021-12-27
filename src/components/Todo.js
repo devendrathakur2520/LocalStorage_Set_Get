@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { adduser, setUser } from '../action';
-import {InputGroup,Form, FormControl} from 'react-bootstrap'
+import { InputGroup, Form, FormControl } from 'react-bootstrap'
 const AddUser = () => {
 
     const dispatch = useDispatch();
@@ -23,10 +23,10 @@ const AddUser = () => {
 
     return (
         <div>
-            <Form  onSubmit={onSubmit}>
+            <Form onSubmit={onSubmit}>
                 <div>
                     <h1> Todo APP</h1>
-                    
+
                     <label>Name: </label>
                     <input type="text" name="name" value={name}
                         autoComplete="off"
@@ -49,7 +49,7 @@ const AddUser = () => {
 
                 <div>
                     <input type="submit" className="btn btn-primary" value="submit" />
-                    
+
 
                 </div>
             </Form>
